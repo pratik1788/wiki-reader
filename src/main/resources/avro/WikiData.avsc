@@ -1,0 +1,12 @@
+{"namespace": "com.ps.wikireader.pojo",
+ "type": "record",
+ "name": "WikiData",
+ "fields": [
+     {"name": "yearDateDay", "type": "int"},
+     {"name": "hourOfDay", "type": "int"},
+     {"name": "language", "type": "string"},
+     {"name": "pageName", "type": "string"},
+     {"name": "nonUniqueViews", "type": "int"},
+     {"name": "bytesTransferred", "type": "long"}
+ ]
+}

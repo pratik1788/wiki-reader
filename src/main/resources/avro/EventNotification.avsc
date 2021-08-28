@@ -1,0 +1,8 @@
+{"namespace": "com.ps.wikireader.pojo",
+ "type": "record",
+ "name": "EventNotification",
+ "fields": [
+     {"name": "fileName", "type": "string"},
+     {"name": "eventName", "type": "string"}
+ ]
+}

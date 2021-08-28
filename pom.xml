@@ -15,6 +15,7 @@
 	<description>Reader that reads data from web and write to kafka</description>
 	<properties>
 		<java.version>11</java.version>
+		<avro.version>1.10.2</avro.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -22,10 +23,33 @@
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.apache.avro</groupId>
+			<artifactId>avro-compiler</artifactId>
+			<version>${avro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.7.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.7.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.13</version>
+		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -56,6 +80,27 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.avro</groupId>
+				<artifactId>avro-maven-plugin</artifactId>
+				<version>${avro.version}</version>
+				<executions>
+					<execution>
+						<id>schemas</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>schema</goal>
+							<goal>protocol</goal>
+							<goal>idl-protocol</goal>
+						</goals>
+						<configuration>
+							<sourceDirectory>${project.basedir}/src/main/resources/avro/</sourceDirectory>
+							<outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
+							<stringType>String</stringType>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

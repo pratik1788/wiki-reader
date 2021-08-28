@@ -1,0 +1,20 @@
+application:
+  data:
+    extraction:
+      base-url: http://dumps.wikimedia.org/other/pagecounts-raw/
+    read-limit: -1
+    producer:
+      topic: wiki-data
+  event:
+      group-id: wiki-reader
+      topic: evenet-notification
+spring:
+  kafka:
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.ByteArraySerializer
+      max-block-ms-config: 0
+    consumer:
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
