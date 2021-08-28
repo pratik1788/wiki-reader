@@ -24,7 +24,7 @@ public class DataProducer {
     @Autowired
     private KafkaTemplate<String, byte[]> kafkaTemplate;
 
-    public void sendMessage(WikiData message) throws IOException {
+    public void sendMessage(WikiData message, String messageKey) throws IOException {
         logger.debug("producing message on topic {} with message {}",topic,message);
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         BinaryEncoder encoder = EncoderFactory.get().binaryEncoder(out, null);
@@ -32,7 +32,7 @@ public class DataProducer {
         writer.write(message, encoder);
         encoder.flush();
         out.close();
-        this.kafkaTemplate.send(topic, out.toByteArray());
+        this.kafkaTemplate.send(topic, messageKey,out.toByteArray());
     }
 
 }

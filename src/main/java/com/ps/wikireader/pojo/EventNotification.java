@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class EventNotification extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -2176589481110070686L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"EventNotification\",\"namespace\":\"com.ps.wikireader.pojo\",\"fields\":[{\"name\":\"fileName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"eventName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
+  private static final long serialVersionUID = -4978400710346139607L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"EventNotification\",\"namespace\":\"com.ps.wikireader.pojo\",\"fields\":[{\"name\":\"fileName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"eventName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"details\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -73,6 +73,7 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
 
    private java.lang.String fileName;
    private java.lang.String eventName;
+   private java.lang.String details;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -85,10 +86,12 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
    * All-args constructor.
    * @param fileName The new value for fileName
    * @param eventName The new value for eventName
+   * @param details The new value for details
    */
-  public EventNotification(java.lang.String fileName, java.lang.String eventName) {
+  public EventNotification(java.lang.String fileName, java.lang.String eventName, java.lang.String details) {
     this.fileName = fileName;
     this.eventName = eventName;
+    this.details = details;
   }
 
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
@@ -98,6 +101,7 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
     switch (field$) {
     case 0: return fileName;
     case 1: return eventName;
+    case 2: return details;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -108,6 +112,7 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
     switch (field$) {
     case 0: fileName = value$ != null ? value$.toString() : null; break;
     case 1: eventName = value$ != null ? value$.toString() : null; break;
+    case 2: details = value$ != null ? value$.toString() : null; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -144,6 +149,23 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
    */
   public void setEventName(java.lang.String value) {
     this.eventName = value;
+  }
+
+  /**
+   * Gets the value of the 'details' field.
+   * @return The value of the 'details' field.
+   */
+  public java.lang.String getDetails() {
+    return details;
+  }
+
+
+  /**
+   * Sets the value of the 'details' field.
+   * @param value the value to set.
+   */
+  public void setDetails(java.lang.String value) {
+    this.details = value;
   }
 
   /**
@@ -189,6 +211,7 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
 
     private java.lang.String fileName;
     private java.lang.String eventName;
+    private java.lang.String details;
 
     /** Creates a new Builder */
     private Builder() {
@@ -209,6 +232,10 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
         this.eventName = data().deepCopy(fields()[1].schema(), other.eventName);
         fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
+      if (isValidValue(fields()[2], other.details)) {
+        this.details = data().deepCopy(fields()[2].schema(), other.details);
+        fieldSetFlags()[2] = other.fieldSetFlags()[2];
+      }
     }
 
     /**
@@ -224,6 +251,10 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
       if (isValidValue(fields()[1], other.eventName)) {
         this.eventName = data().deepCopy(fields()[1].schema(), other.eventName);
         fieldSetFlags()[1] = true;
+      }
+      if (isValidValue(fields()[2], other.details)) {
+        this.details = data().deepCopy(fields()[2].schema(), other.details);
+        fieldSetFlags()[2] = true;
       }
     }
 
@@ -307,6 +338,46 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
       return this;
     }
 
+    /**
+      * Gets the value of the 'details' field.
+      * @return The value.
+      */
+    public java.lang.String getDetails() {
+      return details;
+    }
+
+
+    /**
+      * Sets the value of the 'details' field.
+      * @param value The value of 'details'.
+      * @return This builder.
+      */
+    public com.ps.wikireader.pojo.EventNotification.Builder setDetails(java.lang.String value) {
+      validate(fields()[2], value);
+      this.details = value;
+      fieldSetFlags()[2] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'details' field has been set.
+      * @return True if the 'details' field has been set, false otherwise.
+      */
+    public boolean hasDetails() {
+      return fieldSetFlags()[2];
+    }
+
+
+    /**
+      * Clears the value of the 'details' field.
+      * @return This builder.
+      */
+    public com.ps.wikireader.pojo.EventNotification.Builder clearDetails() {
+      details = null;
+      fieldSetFlags()[2] = false;
+      return this;
+    }
+
     @Override
     @SuppressWarnings("unchecked")
     public EventNotification build() {
@@ -314,6 +385,7 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
         EventNotification record = new EventNotification();
         record.fileName = fieldSetFlags()[0] ? this.fileName : (java.lang.String) defaultValue(fields()[0]);
         record.eventName = fieldSetFlags()[1] ? this.eventName : (java.lang.String) defaultValue(fields()[1]);
+        record.details = fieldSetFlags()[2] ? this.details : (java.lang.String) defaultValue(fields()[2]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -350,6 +422,14 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
 
     out.writeString(this.eventName);
 
+    if (this.details == null) {
+      out.writeIndex(0);
+      out.writeNull();
+    } else {
+      out.writeIndex(1);
+      out.writeString(this.details);
+    }
+
   }
 
   @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
@@ -361,8 +441,15 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
 
       this.eventName = in.readString();
 
+      if (in.readIndex() != 1) {
+        in.readNull();
+        this.details = null;
+      } else {
+        this.details = in.readString();
+      }
+
     } else {
-      for (int i = 0; i < 2; i++) {
+      for (int i = 0; i < 3; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
           this.fileName = in.readString();
@@ -370,6 +457,15 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
 
         case 1:
           this.eventName = in.readString();
+          break;
+
+        case 2:
+          if (in.readIndex() != 1) {
+            in.readNull();
+            this.details = null;
+          } else {
+            this.details = in.readString();
+          }
           break;
 
         default:

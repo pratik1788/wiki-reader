@@ -8,13 +8,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public enum EvenetName {
-    START_EXTRACTION ("startExtraction"),
-    EXTRATCION_STARTED ("extrationStarted"),
-    EXTRATCION_FAILED("extractionFailed"),
-    EXTRATCION_SUCCESSFUL("extractionSuccessful"),
-    CONSUMPTION_STARTED("consumptionStarted"),
-    CONSUMPTION_SUCCESSFUL("consumptionSuccessful"),
-    CONSUMPTION_FAILED("consumptionFailed");
-
+    REQUEST_TO_START_READING_RESOURCE ("requestToStartReadingResource"),
+    RESOURCE_READING_STARTED("resourceReadingStarted"),
+    RESOURCE_READING_FAILED("resourceReadingFailed"),
+    RESOURCE_READING_SUCCESSFUL("resourceReadingSuccessful"),
+    DATA_SINK_STARTED("dataSinkStarted"),
+    DATA_SINK_IN_PROGRESS("dataSinkInProgress"),
+    DATA_SINK_SUCCESSFUL("dataSinkSuccessful"),
+    DATA_SINK_FAILED("dataSinkFailed");
     String name;
 }

@@ -3,6 +3,7 @@
  "name": "EventNotification",
  "fields": [
      {"name": "fileName", "type": "string"},
-     {"name": "eventName", "type": "string"}
+     {"name": "eventName", "type": "string"},
+     {"name": "details", "type": ["null","string"],"default": null}
  ]
 }

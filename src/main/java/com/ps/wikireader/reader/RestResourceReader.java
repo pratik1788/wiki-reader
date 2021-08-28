@@ -1,6 +1,5 @@
 package com.ps.wikireader.reader;
 
-import com.ps.wikireader.pojo.ExtractionRequest;
 import com.ps.wikireader.pojo.WikiData;
 import com.ps.wikireader.producer.DataProducer;
 import com.ps.wikireader.util.FileNameConverterUtil;
@@ -35,14 +34,14 @@ public class RestResourceReader {
     @Value("${application.data.read-limit}")
     private int readlimit;
 
-    public boolean extractAndProcessData(ExtractionRequest extractionRequest) {
-        logger.info("Extraction request received with parameter as {}",extractionRequest);
+    public boolean extractAndProcessData(String fileName) {
+        logger.info("import data request received with parameter as {}",fileName);
         RequestCallback requestCallback = request -> request
                 .getHeaders()
                 .setAccept(Arrays.asList(MediaType.APPLICATION_OCTET_STREAM, MediaType.ALL));
-        int yearMonthDay= FileNameConverterUtil.getYearMonthDayFromFileName(extractionRequest.getFilenameToExtract());
-        int hour= FileNameConverterUtil.getHourFileName(extractionRequest.getFilenameToExtract());
-        Boolean readSuccessFlag= restTemplate.execute(baseUrl+FileNameConverterUtil.getFilePathFromFileName(extractionRequest.getFilenameToExtract()), HttpMethod.GET, requestCallback, clientHttpResponse -> {
+        int yearMonthDay= FileNameConverterUtil.getYearMonthDayFromFileName(fileName);
+        int hour= FileNameConverterUtil.getHourFileName(fileName);
+        Boolean readSuccessFlag= restTemplate.execute(baseUrl+FileNameConverterUtil.getFilePathFromFileName(fileName), HttpMethod.GET, requestCallback, clientHttpResponse -> {
             int rowCount=0;
             InputStream gzipStream = new GZIPInputStream(clientHttpResponse.getBody());
             Reader decoder = new InputStreamReader(gzipStream);
@@ -56,7 +55,7 @@ public class RestResourceReader {
                         .setLanguage(data[0])
                         .setPageName(data[1])
                         .setNonUniqueViews(Integer.parseInt(data[2]))
-                        .setBytesTransferred((Long.parseLong(data[3]))).build());
+                        .setBytesTransferred((Long.parseLong(data[3]))).build(),fileName+"~"+rowCount);
                 rowCount++;
             }
             logger.info("Published {} no. of message",rowCount);

@@ -1,7 +1,5 @@
 package com.ps.wikireader.util;
 
-import com.ps.wikireader.pojo.ExtractionRequest;
-
 public class FileNameConverterUtil {
     public static int getYearMonthDayFromFileName(String fileName){
         String[] fileNameSplit=fileName.split("-");
