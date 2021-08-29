@@ -1,12 +1,24 @@
 {"namespace": "com.ps.wikireader.pojo",
  "type": "record",
- "name": "WikiData",
- "fields": [
-     {"name": "yearMonthDay", "type": "int"},
-     {"name": "hourOfDay", "type": "int"},
-     {"name": "language", "type": "string"},
-     {"name": "pageName", "type": "string"},
-     {"name": "nonUniqueViews", "type": "int"},
-     {"name": "bytesTransferred", "type": "long"}
- ]
-}
+  "name": "WikiDataCollection",
+  "fields": [
+       {
+         "name": "wikiDataList",
+         "type": {
+            "type": "array",
+            "items": {
+                "name": "WikiData",
+                "type": "record",
+                "fields": [
+                   {"name": "yearMonthDay", "type": "int"},
+                   {"name": "hourOfDay", "type": "int"},
+                   {"name": "language", "type": "string"},
+                   {"name": "pageName", "type": "string"},
+                   {"name": "nonUniqueViews", "type": "int"},
+                   {"name": "bytesTransferred", "type": "long"}
+                  ]
+            }
+        }
+    }
+   ]
+ }

@@ -14,11 +14,14 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class EventNotification extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -4978400710346139607L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"EventNotification\",\"namespace\":\"com.ps.wikireader.pojo\",\"fields\":[{\"name\":\"fileName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"eventName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"details\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null}]}");
+  private static final long serialVersionUID = -6270366884424358835L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"EventNotification\",\"namespace\":\"com.ps.wikireader.pojo\",\"fields\":[{\"name\":\"fileName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"eventName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"eventTimeStamp\",\"type\":{\"type\":\"long\",\"logicalType\":\"timestamp-millis\"}},{\"name\":\"details\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
+static {
+    MODEL$.addLogicalTypeConversion(new org.apache.avro.data.TimeConversions.TimestampMillisConversion());
+  }
 
   private static final BinaryMessageEncoder<EventNotification> ENCODER =
       new BinaryMessageEncoder<EventNotification>(MODEL$, SCHEMA$);
@@ -73,6 +76,7 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
 
    private java.lang.String fileName;
    private java.lang.String eventName;
+   private java.time.Instant eventTimeStamp;
    private java.lang.String details;
 
   /**
@@ -86,11 +90,13 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
    * All-args constructor.
    * @param fileName The new value for fileName
    * @param eventName The new value for eventName
+   * @param eventTimeStamp The new value for eventTimeStamp
    * @param details The new value for details
    */
-  public EventNotification(java.lang.String fileName, java.lang.String eventName, java.lang.String details) {
+  public EventNotification(java.lang.String fileName, java.lang.String eventName, java.time.Instant eventTimeStamp, java.lang.String details) {
     this.fileName = fileName;
     this.eventName = eventName;
+    this.eventTimeStamp = eventTimeStamp.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
     this.details = details;
   }
 
@@ -101,9 +107,24 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
     switch (field$) {
     case 0: return fileName;
     case 1: return eventName;
-    case 2: return details;
+    case 2: return eventTimeStamp;
+    case 3: return details;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
+  }
+
+  private static final org.apache.avro.Conversion<?>[] conversions =
+      new org.apache.avro.Conversion<?>[] {
+      null,
+      null,
+      new org.apache.avro.data.TimeConversions.TimestampMillisConversion(),
+      null,
+      null
+  };
+
+  @Override
+  public org.apache.avro.Conversion<?> getConversion(int field) {
+    return conversions[field];
   }
 
   // Used by DatumReader.  Applications should not call.
@@ -112,7 +133,8 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
     switch (field$) {
     case 0: fileName = value$ != null ? value$.toString() : null; break;
     case 1: eventName = value$ != null ? value$.toString() : null; break;
-    case 2: details = value$ != null ? value$.toString() : null; break;
+    case 2: eventTimeStamp = (java.time.Instant)value$; break;
+    case 3: details = value$ != null ? value$.toString() : null; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -149,6 +171,23 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
    */
   public void setEventName(java.lang.String value) {
     this.eventName = value;
+  }
+
+  /**
+   * Gets the value of the 'eventTimeStamp' field.
+   * @return The value of the 'eventTimeStamp' field.
+   */
+  public java.time.Instant getEventTimeStamp() {
+    return eventTimeStamp;
+  }
+
+
+  /**
+   * Sets the value of the 'eventTimeStamp' field.
+   * @param value the value to set.
+   */
+  public void setEventTimeStamp(java.time.Instant value) {
+    this.eventTimeStamp = value.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
   }
 
   /**
@@ -211,6 +250,7 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
 
     private java.lang.String fileName;
     private java.lang.String eventName;
+    private java.time.Instant eventTimeStamp;
     private java.lang.String details;
 
     /** Creates a new Builder */
@@ -232,9 +272,13 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
         this.eventName = data().deepCopy(fields()[1].schema(), other.eventName);
         fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
-      if (isValidValue(fields()[2], other.details)) {
-        this.details = data().deepCopy(fields()[2].schema(), other.details);
+      if (isValidValue(fields()[2], other.eventTimeStamp)) {
+        this.eventTimeStamp = data().deepCopy(fields()[2].schema(), other.eventTimeStamp);
         fieldSetFlags()[2] = other.fieldSetFlags()[2];
+      }
+      if (isValidValue(fields()[3], other.details)) {
+        this.details = data().deepCopy(fields()[3].schema(), other.details);
+        fieldSetFlags()[3] = other.fieldSetFlags()[3];
       }
     }
 
@@ -252,9 +296,13 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
         this.eventName = data().deepCopy(fields()[1].schema(), other.eventName);
         fieldSetFlags()[1] = true;
       }
-      if (isValidValue(fields()[2], other.details)) {
-        this.details = data().deepCopy(fields()[2].schema(), other.details);
+      if (isValidValue(fields()[2], other.eventTimeStamp)) {
+        this.eventTimeStamp = data().deepCopy(fields()[2].schema(), other.eventTimeStamp);
         fieldSetFlags()[2] = true;
+      }
+      if (isValidValue(fields()[3], other.details)) {
+        this.details = data().deepCopy(fields()[3].schema(), other.details);
+        fieldSetFlags()[3] = true;
       }
     }
 
@@ -339,6 +387,45 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
     }
 
     /**
+      * Gets the value of the 'eventTimeStamp' field.
+      * @return The value.
+      */
+    public java.time.Instant getEventTimeStamp() {
+      return eventTimeStamp;
+    }
+
+
+    /**
+      * Sets the value of the 'eventTimeStamp' field.
+      * @param value The value of 'eventTimeStamp'.
+      * @return This builder.
+      */
+    public com.ps.wikireader.pojo.EventNotification.Builder setEventTimeStamp(java.time.Instant value) {
+      validate(fields()[2], value);
+      this.eventTimeStamp = value.truncatedTo(java.time.temporal.ChronoUnit.MILLIS);
+      fieldSetFlags()[2] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'eventTimeStamp' field has been set.
+      * @return True if the 'eventTimeStamp' field has been set, false otherwise.
+      */
+    public boolean hasEventTimeStamp() {
+      return fieldSetFlags()[2];
+    }
+
+
+    /**
+      * Clears the value of the 'eventTimeStamp' field.
+      * @return This builder.
+      */
+    public com.ps.wikireader.pojo.EventNotification.Builder clearEventTimeStamp() {
+      fieldSetFlags()[2] = false;
+      return this;
+    }
+
+    /**
       * Gets the value of the 'details' field.
       * @return The value.
       */
@@ -353,9 +440,9 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
       * @return This builder.
       */
     public com.ps.wikireader.pojo.EventNotification.Builder setDetails(java.lang.String value) {
-      validate(fields()[2], value);
+      validate(fields()[3], value);
       this.details = value;
-      fieldSetFlags()[2] = true;
+      fieldSetFlags()[3] = true;
       return this;
     }
 
@@ -364,7 +451,7 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
       * @return True if the 'details' field has been set, false otherwise.
       */
     public boolean hasDetails() {
-      return fieldSetFlags()[2];
+      return fieldSetFlags()[3];
     }
 
 
@@ -374,7 +461,7 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
       */
     public com.ps.wikireader.pojo.EventNotification.Builder clearDetails() {
       details = null;
-      fieldSetFlags()[2] = false;
+      fieldSetFlags()[3] = false;
       return this;
     }
 
@@ -385,7 +472,8 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
         EventNotification record = new EventNotification();
         record.fileName = fieldSetFlags()[0] ? this.fileName : (java.lang.String) defaultValue(fields()[0]);
         record.eventName = fieldSetFlags()[1] ? this.eventName : (java.lang.String) defaultValue(fields()[1]);
-        record.details = fieldSetFlags()[2] ? this.details : (java.lang.String) defaultValue(fields()[2]);
+        record.eventTimeStamp = fieldSetFlags()[2] ? this.eventTimeStamp : (java.time.Instant) defaultValue(fields()[2]);
+        record.details = fieldSetFlags()[3] ? this.details : (java.lang.String) defaultValue(fields()[3]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -413,67 +501,6 @@ public class EventNotification extends org.apache.avro.specific.SpecificRecordBa
     READER$.read(this, SpecificData.getDecoder(in));
   }
 
-  @Override protected boolean hasCustomCoders() { return true; }
-
-  @Override public void customEncode(org.apache.avro.io.Encoder out)
-    throws java.io.IOException
-  {
-    out.writeString(this.fileName);
-
-    out.writeString(this.eventName);
-
-    if (this.details == null) {
-      out.writeIndex(0);
-      out.writeNull();
-    } else {
-      out.writeIndex(1);
-      out.writeString(this.details);
-    }
-
-  }
-
-  @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
-    throws java.io.IOException
-  {
-    org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
-    if (fieldOrder == null) {
-      this.fileName = in.readString();
-
-      this.eventName = in.readString();
-
-      if (in.readIndex() != 1) {
-        in.readNull();
-        this.details = null;
-      } else {
-        this.details = in.readString();
-      }
-
-    } else {
-      for (int i = 0; i < 3; i++) {
-        switch (fieldOrder[i].pos()) {
-        case 0:
-          this.fileName = in.readString();
-          break;
-
-        case 1:
-          this.eventName = in.readString();
-          break;
-
-        case 2:
-          if (in.readIndex() != 1) {
-            in.readNull();
-            this.details = null;
-          } else {
-            this.details = in.readString();
-          }
-          break;
-
-        default:
-          throw new java.io.IOException("Corrupt ResolvingDecoder.");
-        }
-      }
-    }
-  }
 }
 
 

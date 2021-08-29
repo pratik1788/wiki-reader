@@ -5,6 +5,7 @@ application:
     extraction:
       base-url: http://dumps.wikimedia.org/other/pagecounts-raw/
     read-limit: -1
+    batch-size: 5000
     producer:
       topic: wiki-data
   event:

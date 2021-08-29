@@ -1,7 +1,7 @@
 package com.ps.wikireader.event;
 
+import com.ps.wikireader.enums.EvenetName;
 import com.ps.wikireader.pojo.EventNotification;
-import com.ps.wikireader.producer.DataProducer;
 import com.ps.wikireader.reader.RestResourceReader;
 import org.apache.avro.io.Decoder;
 import org.apache.avro.io.DecoderFactory;
@@ -12,10 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;
-import com.ps.wikireader.enums.EvenetName;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.time.Instant;
 
 @Service
 public class EventConsumer {
@@ -39,18 +39,22 @@ public class EventConsumer {
                 eventProducer.sendMessage(EventNotification.newBuilder()
                         .setFileName(eventNotification.getFileName())
                         .setEventName(EvenetName.RESOURCE_READING_STARTED.getName())
+                        .setEventTimeStamp(Instant.now())
                         .build());
                 boolean readStatus = restResourceReader.extractAndProcessData(eventNotification.getFileName());
                 if (readStatus) {
                     eventProducer.sendMessage(EventNotification.newBuilder()
                             .setFileName(eventNotification.getFileName())
                             .setEventName(EvenetName.RESOURCE_READING_SUCCESSFUL.getName())
+                            .setEventTimeStamp(Instant.now())
                             .build());
                 }
             } catch (Exception e) {
                 eventProducer.sendMessage(EventNotification.newBuilder()
                         .setFileName(eventNotification.getFileName())
                         .setEventName(EvenetName.RESOURCE_READING_FAILED.getName())
+                        .setEventTimeStamp(Instant.now())
+                        .setDetails(e.getMessage())
                         .build());
             }
         }

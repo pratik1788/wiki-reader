@@ -4,6 +4,7 @@
  "fields": [
      {"name": "fileName", "type": "string"},
      {"name": "eventName", "type": "string"},
+     {"name": "eventTimeStamp", "type": { "type": "long", "logicalType": "timestamp-millis"}},
      {"name": "details", "type": ["null","string"],"default": null}
  ]
 }
