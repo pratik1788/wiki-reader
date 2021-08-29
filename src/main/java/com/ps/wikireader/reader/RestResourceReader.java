@@ -50,7 +50,7 @@ public class RestResourceReader {
             logger.info("chunk received");
             while ((content = buffered.readLine()) != null && readlimit != -1 && rowCount < readlimit) {
                 String[] data=content.split(" ");
-                dataProducer.sendMessage(WikiData.newBuilder().setYearDateDay(yearMonthDay)
+                dataProducer.sendMessage(WikiData.newBuilder().setYearMonthDay(yearMonthDay)
                         .setHourOfDay(hour)
                         .setLanguage(data[0])
                         .setPageName(data[1])

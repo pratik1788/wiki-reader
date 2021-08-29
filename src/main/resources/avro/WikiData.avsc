@@ -2,7 +2,7 @@
  "type": "record",
  "name": "WikiData",
  "fields": [
-     {"name": "yearDateDay", "type": "int"},
+     {"name": "yearMonthDay", "type": "int"},
      {"name": "hourOfDay", "type": "int"},
      {"name": "language", "type": "string"},
      {"name": "pageName", "type": "string"},

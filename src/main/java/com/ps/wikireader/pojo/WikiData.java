@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class WikiData extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 6497260237097208635L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"WikiData\",\"namespace\":\"com.ps.wikireader.pojo\",\"fields\":[{\"name\":\"yearDateDay\",\"type\":\"int\"},{\"name\":\"hourOfDay\",\"type\":\"int\"},{\"name\":\"language\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"pageName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"nonUniqueViews\",\"type\":\"int\"},{\"name\":\"bytesTransferred\",\"type\":\"long\"}]}");
+  private static final long serialVersionUID = 7732992640266527406L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"WikiData\",\"namespace\":\"com.ps.wikireader.pojo\",\"fields\":[{\"name\":\"yearMonthDay\",\"type\":\"int\"},{\"name\":\"hourOfDay\",\"type\":\"int\"},{\"name\":\"language\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"pageName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"nonUniqueViews\",\"type\":\"int\"},{\"name\":\"bytesTransferred\",\"type\":\"long\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -71,7 +71,7 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
     return DECODER.decode(b);
   }
 
-   private int yearDateDay;
+   private int yearMonthDay;
    private int hourOfDay;
    private java.lang.String language;
    private java.lang.String pageName;
@@ -87,15 +87,15 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
 
   /**
    * All-args constructor.
-   * @param yearDateDay The new value for yearDateDay
+   * @param yearMonthDay The new value for yearMonthDay
    * @param hourOfDay The new value for hourOfDay
    * @param language The new value for language
    * @param pageName The new value for pageName
    * @param nonUniqueViews The new value for nonUniqueViews
    * @param bytesTransferred The new value for bytesTransferred
    */
-  public WikiData(java.lang.Integer yearDateDay, java.lang.Integer hourOfDay, java.lang.String language, java.lang.String pageName, java.lang.Integer nonUniqueViews, java.lang.Long bytesTransferred) {
-    this.yearDateDay = yearDateDay;
+  public WikiData(java.lang.Integer yearMonthDay, java.lang.Integer hourOfDay, java.lang.String language, java.lang.String pageName, java.lang.Integer nonUniqueViews, java.lang.Long bytesTransferred) {
+    this.yearMonthDay = yearMonthDay;
     this.hourOfDay = hourOfDay;
     this.language = language;
     this.pageName = pageName;
@@ -108,7 +108,7 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
   // Used by DatumWriter.  Applications should not call.
   public java.lang.Object get(int field$) {
     switch (field$) {
-    case 0: return yearDateDay;
+    case 0: return yearMonthDay;
     case 1: return hourOfDay;
     case 2: return language;
     case 3: return pageName;
@@ -122,7 +122,7 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: yearDateDay = (java.lang.Integer)value$; break;
+    case 0: yearMonthDay = (java.lang.Integer)value$; break;
     case 1: hourOfDay = (java.lang.Integer)value$; break;
     case 2: language = value$ != null ? value$.toString() : null; break;
     case 3: pageName = value$ != null ? value$.toString() : null; break;
@@ -133,20 +133,20 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
   }
 
   /**
-   * Gets the value of the 'yearDateDay' field.
-   * @return The value of the 'yearDateDay' field.
+   * Gets the value of the 'yearMonthDay' field.
+   * @return The value of the 'yearMonthDay' field.
    */
-  public int getYearDateDay() {
-    return yearDateDay;
+  public int getYearMonthDay() {
+    return yearMonthDay;
   }
 
 
   /**
-   * Sets the value of the 'yearDateDay' field.
+   * Sets the value of the 'yearMonthDay' field.
    * @param value the value to set.
    */
-  public void setYearDateDay(int value) {
-    this.yearDateDay = value;
+  public void setYearMonthDay(int value) {
+    this.yearMonthDay = value;
   }
 
   /**
@@ -275,7 +275,7 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<WikiData>
     implements org.apache.avro.data.RecordBuilder<WikiData> {
 
-    private int yearDateDay;
+    private int yearMonthDay;
     private int hourOfDay;
     private java.lang.String language;
     private java.lang.String pageName;
@@ -293,8 +293,8 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
      */
     private Builder(com.ps.wikireader.pojo.WikiData.Builder other) {
       super(other);
-      if (isValidValue(fields()[0], other.yearDateDay)) {
-        this.yearDateDay = data().deepCopy(fields()[0].schema(), other.yearDateDay);
+      if (isValidValue(fields()[0], other.yearMonthDay)) {
+        this.yearMonthDay = data().deepCopy(fields()[0].schema(), other.yearMonthDay);
         fieldSetFlags()[0] = other.fieldSetFlags()[0];
       }
       if (isValidValue(fields()[1], other.hourOfDay)) {
@@ -325,8 +325,8 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
      */
     private Builder(com.ps.wikireader.pojo.WikiData other) {
       super(SCHEMA$);
-      if (isValidValue(fields()[0], other.yearDateDay)) {
-        this.yearDateDay = data().deepCopy(fields()[0].schema(), other.yearDateDay);
+      if (isValidValue(fields()[0], other.yearMonthDay)) {
+        this.yearMonthDay = data().deepCopy(fields()[0].schema(), other.yearMonthDay);
         fieldSetFlags()[0] = true;
       }
       if (isValidValue(fields()[1], other.hourOfDay)) {
@@ -352,40 +352,40 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
     }
 
     /**
-      * Gets the value of the 'yearDateDay' field.
+      * Gets the value of the 'yearMonthDay' field.
       * @return The value.
       */
-    public int getYearDateDay() {
-      return yearDateDay;
+    public int getYearMonthDay() {
+      return yearMonthDay;
     }
 
 
     /**
-      * Sets the value of the 'yearDateDay' field.
-      * @param value The value of 'yearDateDay'.
+      * Sets the value of the 'yearMonthDay' field.
+      * @param value The value of 'yearMonthDay'.
       * @return This builder.
       */
-    public com.ps.wikireader.pojo.WikiData.Builder setYearDateDay(int value) {
+    public com.ps.wikireader.pojo.WikiData.Builder setYearMonthDay(int value) {
       validate(fields()[0], value);
-      this.yearDateDay = value;
+      this.yearMonthDay = value;
       fieldSetFlags()[0] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'yearDateDay' field has been set.
-      * @return True if the 'yearDateDay' field has been set, false otherwise.
+      * Checks whether the 'yearMonthDay' field has been set.
+      * @return True if the 'yearMonthDay' field has been set, false otherwise.
       */
-    public boolean hasYearDateDay() {
+    public boolean hasYearMonthDay() {
       return fieldSetFlags()[0];
     }
 
 
     /**
-      * Clears the value of the 'yearDateDay' field.
+      * Clears the value of the 'yearMonthDay' field.
       * @return This builder.
       */
-    public com.ps.wikireader.pojo.WikiData.Builder clearYearDateDay() {
+    public com.ps.wikireader.pojo.WikiData.Builder clearYearMonthDay() {
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -592,7 +592,7 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
     public WikiData build() {
       try {
         WikiData record = new WikiData();
-        record.yearDateDay = fieldSetFlags()[0] ? this.yearDateDay : (java.lang.Integer) defaultValue(fields()[0]);
+        record.yearMonthDay = fieldSetFlags()[0] ? this.yearMonthDay : (java.lang.Integer) defaultValue(fields()[0]);
         record.hourOfDay = fieldSetFlags()[1] ? this.hourOfDay : (java.lang.Integer) defaultValue(fields()[1]);
         record.language = fieldSetFlags()[2] ? this.language : (java.lang.String) defaultValue(fields()[2]);
         record.pageName = fieldSetFlags()[3] ? this.pageName : (java.lang.String) defaultValue(fields()[3]);
@@ -630,7 +630,7 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
   @Override public void customEncode(org.apache.avro.io.Encoder out)
     throws java.io.IOException
   {
-    out.writeInt(this.yearDateDay);
+    out.writeInt(this.yearMonthDay);
 
     out.writeInt(this.hourOfDay);
 
@@ -649,7 +649,7 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
   {
     org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
     if (fieldOrder == null) {
-      this.yearDateDay = in.readInt();
+      this.yearMonthDay = in.readInt();
 
       this.hourOfDay = in.readInt();
 
@@ -665,7 +665,7 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
       for (int i = 0; i < 6; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
-          this.yearDateDay = in.readInt();
+          this.yearMonthDay = in.readInt();
           break;
 
         case 1:
