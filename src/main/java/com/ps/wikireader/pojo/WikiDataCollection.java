@@ -5,15 +5,17 @@
  */
 package com.ps.wikireader.pojo;
 
-import org.apache.avro.message.BinaryMessageDecoder;
-import org.apache.avro.message.BinaryMessageEncoder;
-import org.apache.avro.message.SchemaStore;
+import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
+import org.apache.avro.util.Utf8;
+import org.apache.avro.message.BinaryMessageEncoder;
+import org.apache.avro.message.BinaryMessageDecoder;
+import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class WikiDataCollection extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -3097363619537290743L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"WikiDataCollection\",\"namespace\":\"com.ps.wikireader.pojo\",\"fields\":[{\"name\":\"wikiDataList\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"WikiData\",\"fields\":[{\"name\":\"yearMonthDay\",\"type\":\"int\"},{\"name\":\"hourOfDay\",\"type\":\"int\"},{\"name\":\"language\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"pageName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"nonUniqueViews\",\"type\":\"int\"},{\"name\":\"bytesTransferred\",\"type\":\"long\"}]}}}]}");
+  private static final long serialVersionUID = -6155191740937130099L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"WikiDataCollection\",\"namespace\":\"com.ps.wikireader.pojo\",\"fields\":[{\"name\":\"wikiDataList\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"WikiData\",\"fields\":[{\"name\":\"yearMonthDay\",\"type\":\"int\"},{\"name\":\"hourOfDay\",\"type\":\"int\"},{\"name\":\"language\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"nonUniqueViews\",\"type\":\"int\"},{\"name\":\"recordId\",\"type\":\"int\"},{\"name\":\"pageName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"bytesTransferred\",\"type\":\"long\"}]}}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();

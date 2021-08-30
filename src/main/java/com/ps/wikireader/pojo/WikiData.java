@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class WikiData extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 7732992640266527406L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"WikiData\",\"namespace\":\"com.ps.wikireader.pojo\",\"fields\":[{\"name\":\"yearMonthDay\",\"type\":\"int\"},{\"name\":\"hourOfDay\",\"type\":\"int\"},{\"name\":\"language\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"pageName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"nonUniqueViews\",\"type\":\"int\"},{\"name\":\"bytesTransferred\",\"type\":\"long\"}]}");
+  private static final long serialVersionUID = 4552012457514656718L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"WikiData\",\"namespace\":\"com.ps.wikireader.pojo\",\"fields\":[{\"name\":\"yearMonthDay\",\"type\":\"int\"},{\"name\":\"hourOfDay\",\"type\":\"int\"},{\"name\":\"language\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"nonUniqueViews\",\"type\":\"int\"},{\"name\":\"recordId\",\"type\":\"int\"},{\"name\":\"pageName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"bytesTransferred\",\"type\":\"long\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -74,8 +74,9 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
    private int yearMonthDay;
    private int hourOfDay;
    private java.lang.String language;
-   private java.lang.String pageName;
    private int nonUniqueViews;
+   private int recordId;
+   private java.lang.String pageName;
    private long bytesTransferred;
 
   /**
@@ -90,16 +91,18 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
    * @param yearMonthDay The new value for yearMonthDay
    * @param hourOfDay The new value for hourOfDay
    * @param language The new value for language
-   * @param pageName The new value for pageName
    * @param nonUniqueViews The new value for nonUniqueViews
+   * @param recordId The new value for recordId
+   * @param pageName The new value for pageName
    * @param bytesTransferred The new value for bytesTransferred
    */
-  public WikiData(java.lang.Integer yearMonthDay, java.lang.Integer hourOfDay, java.lang.String language, java.lang.String pageName, java.lang.Integer nonUniqueViews, java.lang.Long bytesTransferred) {
+  public WikiData(java.lang.Integer yearMonthDay, java.lang.Integer hourOfDay, java.lang.String language, java.lang.Integer nonUniqueViews, java.lang.Integer recordId, java.lang.String pageName, java.lang.Long bytesTransferred) {
     this.yearMonthDay = yearMonthDay;
     this.hourOfDay = hourOfDay;
     this.language = language;
-    this.pageName = pageName;
     this.nonUniqueViews = nonUniqueViews;
+    this.recordId = recordId;
+    this.pageName = pageName;
     this.bytesTransferred = bytesTransferred;
   }
 
@@ -111,9 +114,10 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
     case 0: return yearMonthDay;
     case 1: return hourOfDay;
     case 2: return language;
-    case 3: return pageName;
-    case 4: return nonUniqueViews;
-    case 5: return bytesTransferred;
+    case 3: return nonUniqueViews;
+    case 4: return recordId;
+    case 5: return pageName;
+    case 6: return bytesTransferred;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -125,9 +129,10 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
     case 0: yearMonthDay = (java.lang.Integer)value$; break;
     case 1: hourOfDay = (java.lang.Integer)value$; break;
     case 2: language = value$ != null ? value$.toString() : null; break;
-    case 3: pageName = value$ != null ? value$.toString() : null; break;
-    case 4: nonUniqueViews = (java.lang.Integer)value$; break;
-    case 5: bytesTransferred = (java.lang.Long)value$; break;
+    case 3: nonUniqueViews = (java.lang.Integer)value$; break;
+    case 4: recordId = (java.lang.Integer)value$; break;
+    case 5: pageName = value$ != null ? value$.toString() : null; break;
+    case 6: bytesTransferred = (java.lang.Long)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -184,23 +189,6 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
   }
 
   /**
-   * Gets the value of the 'pageName' field.
-   * @return The value of the 'pageName' field.
-   */
-  public java.lang.String getPageName() {
-    return pageName;
-  }
-
-
-  /**
-   * Sets the value of the 'pageName' field.
-   * @param value the value to set.
-   */
-  public void setPageName(java.lang.String value) {
-    this.pageName = value;
-  }
-
-  /**
    * Gets the value of the 'nonUniqueViews' field.
    * @return The value of the 'nonUniqueViews' field.
    */
@@ -215,6 +203,40 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
    */
   public void setNonUniqueViews(int value) {
     this.nonUniqueViews = value;
+  }
+
+  /**
+   * Gets the value of the 'recordId' field.
+   * @return The value of the 'recordId' field.
+   */
+  public int getRecordId() {
+    return recordId;
+  }
+
+
+  /**
+   * Sets the value of the 'recordId' field.
+   * @param value the value to set.
+   */
+  public void setRecordId(int value) {
+    this.recordId = value;
+  }
+
+  /**
+   * Gets the value of the 'pageName' field.
+   * @return The value of the 'pageName' field.
+   */
+  public java.lang.String getPageName() {
+    return pageName;
+  }
+
+
+  /**
+   * Sets the value of the 'pageName' field.
+   * @param value the value to set.
+   */
+  public void setPageName(java.lang.String value) {
+    this.pageName = value;
   }
 
   /**
@@ -278,8 +300,9 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
     private int yearMonthDay;
     private int hourOfDay;
     private java.lang.String language;
-    private java.lang.String pageName;
     private int nonUniqueViews;
+    private int recordId;
+    private java.lang.String pageName;
     private long bytesTransferred;
 
     /** Creates a new Builder */
@@ -305,17 +328,21 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
         this.language = data().deepCopy(fields()[2].schema(), other.language);
         fieldSetFlags()[2] = other.fieldSetFlags()[2];
       }
-      if (isValidValue(fields()[3], other.pageName)) {
-        this.pageName = data().deepCopy(fields()[3].schema(), other.pageName);
+      if (isValidValue(fields()[3], other.nonUniqueViews)) {
+        this.nonUniqueViews = data().deepCopy(fields()[3].schema(), other.nonUniqueViews);
         fieldSetFlags()[3] = other.fieldSetFlags()[3];
       }
-      if (isValidValue(fields()[4], other.nonUniqueViews)) {
-        this.nonUniqueViews = data().deepCopy(fields()[4].schema(), other.nonUniqueViews);
+      if (isValidValue(fields()[4], other.recordId)) {
+        this.recordId = data().deepCopy(fields()[4].schema(), other.recordId);
         fieldSetFlags()[4] = other.fieldSetFlags()[4];
       }
-      if (isValidValue(fields()[5], other.bytesTransferred)) {
-        this.bytesTransferred = data().deepCopy(fields()[5].schema(), other.bytesTransferred);
+      if (isValidValue(fields()[5], other.pageName)) {
+        this.pageName = data().deepCopy(fields()[5].schema(), other.pageName);
         fieldSetFlags()[5] = other.fieldSetFlags()[5];
+      }
+      if (isValidValue(fields()[6], other.bytesTransferred)) {
+        this.bytesTransferred = data().deepCopy(fields()[6].schema(), other.bytesTransferred);
+        fieldSetFlags()[6] = other.fieldSetFlags()[6];
       }
     }
 
@@ -337,17 +364,21 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
         this.language = data().deepCopy(fields()[2].schema(), other.language);
         fieldSetFlags()[2] = true;
       }
-      if (isValidValue(fields()[3], other.pageName)) {
-        this.pageName = data().deepCopy(fields()[3].schema(), other.pageName);
+      if (isValidValue(fields()[3], other.nonUniqueViews)) {
+        this.nonUniqueViews = data().deepCopy(fields()[3].schema(), other.nonUniqueViews);
         fieldSetFlags()[3] = true;
       }
-      if (isValidValue(fields()[4], other.nonUniqueViews)) {
-        this.nonUniqueViews = data().deepCopy(fields()[4].schema(), other.nonUniqueViews);
+      if (isValidValue(fields()[4], other.recordId)) {
+        this.recordId = data().deepCopy(fields()[4].schema(), other.recordId);
         fieldSetFlags()[4] = true;
       }
-      if (isValidValue(fields()[5], other.bytesTransferred)) {
-        this.bytesTransferred = data().deepCopy(fields()[5].schema(), other.bytesTransferred);
+      if (isValidValue(fields()[5], other.pageName)) {
+        this.pageName = data().deepCopy(fields()[5].schema(), other.pageName);
         fieldSetFlags()[5] = true;
+      }
+      if (isValidValue(fields()[6], other.bytesTransferred)) {
+        this.bytesTransferred = data().deepCopy(fields()[6].schema(), other.bytesTransferred);
+        fieldSetFlags()[6] = true;
       }
     }
 
@@ -470,46 +501,6 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
     }
 
     /**
-      * Gets the value of the 'pageName' field.
-      * @return The value.
-      */
-    public java.lang.String getPageName() {
-      return pageName;
-    }
-
-
-    /**
-      * Sets the value of the 'pageName' field.
-      * @param value The value of 'pageName'.
-      * @return This builder.
-      */
-    public com.ps.wikireader.pojo.WikiData.Builder setPageName(java.lang.String value) {
-      validate(fields()[3], value);
-      this.pageName = value;
-      fieldSetFlags()[3] = true;
-      return this;
-    }
-
-    /**
-      * Checks whether the 'pageName' field has been set.
-      * @return True if the 'pageName' field has been set, false otherwise.
-      */
-    public boolean hasPageName() {
-      return fieldSetFlags()[3];
-    }
-
-
-    /**
-      * Clears the value of the 'pageName' field.
-      * @return This builder.
-      */
-    public com.ps.wikireader.pojo.WikiData.Builder clearPageName() {
-      pageName = null;
-      fieldSetFlags()[3] = false;
-      return this;
-    }
-
-    /**
       * Gets the value of the 'nonUniqueViews' field.
       * @return The value.
       */
@@ -524,9 +515,9 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
       * @return This builder.
       */
     public com.ps.wikireader.pojo.WikiData.Builder setNonUniqueViews(int value) {
-      validate(fields()[4], value);
+      validate(fields()[3], value);
       this.nonUniqueViews = value;
-      fieldSetFlags()[4] = true;
+      fieldSetFlags()[3] = true;
       return this;
     }
 
@@ -535,7 +526,7 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
       * @return True if the 'nonUniqueViews' field has been set, false otherwise.
       */
     public boolean hasNonUniqueViews() {
-      return fieldSetFlags()[4];
+      return fieldSetFlags()[3];
     }
 
 
@@ -544,7 +535,86 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
       * @return This builder.
       */
     public com.ps.wikireader.pojo.WikiData.Builder clearNonUniqueViews() {
+      fieldSetFlags()[3] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'recordId' field.
+      * @return The value.
+      */
+    public int getRecordId() {
+      return recordId;
+    }
+
+
+    /**
+      * Sets the value of the 'recordId' field.
+      * @param value The value of 'recordId'.
+      * @return This builder.
+      */
+    public com.ps.wikireader.pojo.WikiData.Builder setRecordId(int value) {
+      validate(fields()[4], value);
+      this.recordId = value;
+      fieldSetFlags()[4] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'recordId' field has been set.
+      * @return True if the 'recordId' field has been set, false otherwise.
+      */
+    public boolean hasRecordId() {
+      return fieldSetFlags()[4];
+    }
+
+
+    /**
+      * Clears the value of the 'recordId' field.
+      * @return This builder.
+      */
+    public com.ps.wikireader.pojo.WikiData.Builder clearRecordId() {
       fieldSetFlags()[4] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'pageName' field.
+      * @return The value.
+      */
+    public java.lang.String getPageName() {
+      return pageName;
+    }
+
+
+    /**
+      * Sets the value of the 'pageName' field.
+      * @param value The value of 'pageName'.
+      * @return This builder.
+      */
+    public com.ps.wikireader.pojo.WikiData.Builder setPageName(java.lang.String value) {
+      validate(fields()[5], value);
+      this.pageName = value;
+      fieldSetFlags()[5] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'pageName' field has been set.
+      * @return True if the 'pageName' field has been set, false otherwise.
+      */
+    public boolean hasPageName() {
+      return fieldSetFlags()[5];
+    }
+
+
+    /**
+      * Clears the value of the 'pageName' field.
+      * @return This builder.
+      */
+    public com.ps.wikireader.pojo.WikiData.Builder clearPageName() {
+      pageName = null;
+      fieldSetFlags()[5] = false;
       return this;
     }
 
@@ -563,9 +633,9 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
       * @return This builder.
       */
     public com.ps.wikireader.pojo.WikiData.Builder setBytesTransferred(long value) {
-      validate(fields()[5], value);
+      validate(fields()[6], value);
       this.bytesTransferred = value;
-      fieldSetFlags()[5] = true;
+      fieldSetFlags()[6] = true;
       return this;
     }
 
@@ -574,7 +644,7 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
       * @return True if the 'bytesTransferred' field has been set, false otherwise.
       */
     public boolean hasBytesTransferred() {
-      return fieldSetFlags()[5];
+      return fieldSetFlags()[6];
     }
 
 
@@ -583,7 +653,7 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
       * @return This builder.
       */
     public com.ps.wikireader.pojo.WikiData.Builder clearBytesTransferred() {
-      fieldSetFlags()[5] = false;
+      fieldSetFlags()[6] = false;
       return this;
     }
 
@@ -595,9 +665,10 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
         record.yearMonthDay = fieldSetFlags()[0] ? this.yearMonthDay : (java.lang.Integer) defaultValue(fields()[0]);
         record.hourOfDay = fieldSetFlags()[1] ? this.hourOfDay : (java.lang.Integer) defaultValue(fields()[1]);
         record.language = fieldSetFlags()[2] ? this.language : (java.lang.String) defaultValue(fields()[2]);
-        record.pageName = fieldSetFlags()[3] ? this.pageName : (java.lang.String) defaultValue(fields()[3]);
-        record.nonUniqueViews = fieldSetFlags()[4] ? this.nonUniqueViews : (java.lang.Integer) defaultValue(fields()[4]);
-        record.bytesTransferred = fieldSetFlags()[5] ? this.bytesTransferred : (java.lang.Long) defaultValue(fields()[5]);
+        record.nonUniqueViews = fieldSetFlags()[3] ? this.nonUniqueViews : (java.lang.Integer) defaultValue(fields()[3]);
+        record.recordId = fieldSetFlags()[4] ? this.recordId : (java.lang.Integer) defaultValue(fields()[4]);
+        record.pageName = fieldSetFlags()[5] ? this.pageName : (java.lang.String) defaultValue(fields()[5]);
+        record.bytesTransferred = fieldSetFlags()[6] ? this.bytesTransferred : (java.lang.Long) defaultValue(fields()[6]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -636,9 +707,11 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
 
     out.writeString(this.language);
 
-    out.writeString(this.pageName);
-
     out.writeInt(this.nonUniqueViews);
+
+    out.writeInt(this.recordId);
+
+    out.writeString(this.pageName);
 
     out.writeLong(this.bytesTransferred);
 
@@ -655,14 +728,16 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
 
       this.language = in.readString();
 
-      this.pageName = in.readString();
-
       this.nonUniqueViews = in.readInt();
+
+      this.recordId = in.readInt();
+
+      this.pageName = in.readString();
 
       this.bytesTransferred = in.readLong();
 
     } else {
-      for (int i = 0; i < 6; i++) {
+      for (int i = 0; i < 7; i++) {
         switch (fieldOrder[i].pos()) {
         case 0:
           this.yearMonthDay = in.readInt();
@@ -677,14 +752,18 @@ public class WikiData extends org.apache.avro.specific.SpecificRecordBase implem
           break;
 
         case 3:
-          this.pageName = in.readString();
-          break;
-
-        case 4:
           this.nonUniqueViews = in.readInt();
           break;
 
+        case 4:
+          this.recordId = in.readInt();
+          break;
+
         case 5:
+          this.pageName = in.readString();
+          break;
+
+        case 6:
           this.bytesTransferred = in.readLong();
           break;
 

@@ -60,13 +60,14 @@ public class RestResourceReader {
             logger.info("chunk received");
             dataProducer.sendMessage(WikiDataCollection.newBuilder().setWikiDataList(Collections.emptyList()).build(),"START"+"~"+fileName);
             List<WikiData> wikiDataList= new ArrayList<>();
-            while ((content = buffered.readLine()) != null && readlimit != -1 && rowCount <= readlimit) {
+            while ((content = buffered.readLine()) != null && (readlimit == -1 || rowCount <= readlimit)) {
                 String[] data=content.split(" ");
                 wikiDataList.add(WikiData.newBuilder().setYearMonthDay(yearMonthDay)
                         .setHourOfDay(hour)
                         .setLanguage(data[0])
                         .setPageName(data[1])
                         .setNonUniqueViews(Integer.parseInt(data[2]))
+                        .setRecordId(rowCount)
                         .setBytesTransferred((Long.parseLong(data[3]))).build());
                 if(rowCount%batchSize == 0) {
                     dataProducer.sendMessage(WikiDataCollection.newBuilder().setWikiDataList(wikiDataList).build(), "DATA" + "~" + fileName + "~" + rowCount);

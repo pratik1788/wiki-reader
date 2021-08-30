@@ -13,8 +13,9 @@
                    {"name": "yearMonthDay", "type": "int"},
                    {"name": "hourOfDay", "type": "int"},
                    {"name": "language", "type": "string"},
-                   {"name": "pageName", "type": "string"},
                    {"name": "nonUniqueViews", "type": "int"},
+                   {"name": "recordId", "type": "int"},
+                   {"name": "pageName", "type": "string"},
                    {"name": "bytesTransferred", "type": "long"}
                   ]
             }
