@@ -10,7 +10,7 @@ application:
       topic: wiki-data
   event:
       group-id: wiki-reader
-      topic: evenet-notification
+      topic: event-notification
 spring:
   kafka:
     producer:
