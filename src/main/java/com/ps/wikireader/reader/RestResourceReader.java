@@ -4,6 +4,7 @@ import com.ps.wikireader.pojo.WikiData;
 import com.ps.wikireader.pojo.WikiDataCollection;
 import com.ps.wikireader.producer.DataProducer;
 import com.ps.wikireader.util.FileNameConverterUtil;
+import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ import java.util.List;
 import java.util.zip.GZIPInputStream;
 
 @Service
+@Setter
 public class RestResourceReader {
 
     private static final Logger logger = LoggerFactory.getLogger(RestResourceReader.class);
@@ -83,7 +85,7 @@ public class RestResourceReader {
             logger.info("Published {} no. of message",rowCount);
             return true;
         });
-        return readSuccessFlag != null;
+        return readSuccessFlag;
     }
 
 

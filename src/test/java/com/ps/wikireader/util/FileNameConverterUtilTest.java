@@ -18,7 +18,12 @@ class FileNameConverterUtilTest {
     }
 
     @Test
-    void getFilePathFromFileName() {
+    void getFilePathFromFileName_1() {
         Assertions.assertEquals("2012/2012-01/pagecounts-20120101-000000.gz",FileNameConverterUtil.getFilePathFromFileName("pagecounts-20120101-000000.gz") );
+    }
+
+    @Test
+    void getFilePathFromFileName_2() {
+        Assertions.assertEquals("2010/2010-12/pagecounts-20101231-000000.gz",FileNameConverterUtil.getFilePathFromFileName("pagecounts-20101231-000000.gz") );
     }
 }
