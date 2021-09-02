@@ -1,6 +1,3 @@
-application:
-  data:
-    read-limit: 100
 spring:
   kafka:
     producer:
